@@ -21,13 +21,13 @@ from utils import get_snowflake_connection
 ON_OFF_SNOWFLAKE_LOAD_ENABLED = False  # Set to True to enable Snowflake loading
 SNOWFLAKE_DATABASE = os.getenv("SNOWFLAKE_DATABASE", "SNOWBEARAIR_DB") # Default to SNOWBEARAIR_DB
 SNOWFLAKE_SCHEMA = os.getenv("SNOWFLAKE_SCHEMA", "RAW") # Default to RAW
-SNOWFLAKE_TABLE = "BORED_API_ACTIVITIES" # Table name for Bored API data
+SNOWFLAKE_TABLE = "STARTER_DAG_LOGAN_L" # Table name for Bored API data
 
 @dag(
     dag_id="starter_dag",
-    start_date=datetime(2026, 1, 6, tzinfo=timezone.utc), # Ensure timezone-aware
+    start_date=datetime(2026, 4, 20, tzinfo=timezone.utc), # Ensure timezone-aware
     schedule="@daily",
-    catchup=True, # Set to True to backfill historical data if needed
+    catchup=False, # Set to True to backfill historical data if needed
     tags=["starter", "example", "elt", "snowflake"],
 )
 def starter_dag_elt():
